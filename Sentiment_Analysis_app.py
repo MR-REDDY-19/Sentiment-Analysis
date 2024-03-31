@@ -12,10 +12,10 @@ nltk.download('vader_lexicon')
 # Load the pre-trained sentiment analysis model
 sia = SentimentIntensityAnalyzer()
 
-header_image_url = "https://github.com/MR-REDDY-19/Sentiment-Analysis/blob/main/twitter-sentiment-analysis1.jpg"
-pos_image_url = "https://github.com/MR-REDDY-19/Sentiment-Analysis/blob/main/Happy.jpg"
-neg_image_url = "https://github.com/MR-REDDY-19/Sentiment-Analysis/blob/main/Sad.jpg"
-neu_image_url = "https://github.com/MR-REDDY-19/Sentiment-Analysis/blob/main/Neutral.jpg"
+header_image_url = "https://raw.githubusercontent.com/MR-REDDY-19/Sentiment-Analysis/blob/main/twitter-sentiment-analysis1.jpg"
+pos_image_url = "https://raw.githubusercontent.com/MR-REDDY-19/Sentiment-Analysis/blob/main/Happy.jpg"
+neg_image_url = "https://raw.githubusercontent.com/MR-REDDY-19/Sentiment-Analysis/blob/main/Sad.jpg"
+neu_image_url = "https://raw.githubusercontent.com/MR-REDDY-19/Sentiment-Analysis/blob/main/Neutral.jpg"
 
 def get_sentiment_status(score):
     if score <= -0.3:
