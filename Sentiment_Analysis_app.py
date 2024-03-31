@@ -4,18 +4,12 @@ import streamlit as st
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 import time
 from PIL import Image
-import nltk
 
-# Download NLTK Vader lexicon
-nltk.download('vader_lexicon')
-
+header_image = Image.open("twitter-sentiment-analysis1.jpg")
+st.image(header_image, use_column_width=True)
+  
 # Load the pre-trained sentiment analysis model
 sia = SentimentIntensityAnalyzer()
-
-header_image_url = "https://raw.githubusercontent.com/MR-REDDY-19/Sentiment-Analysis/blob/main/twitter-sentiment-analysis1.jpg"
-pos_image_url = "https://raw.githubusercontent.com/MR-REDDY-19/Sentiment-Analysis/blob/main/Happy.jpg"
-neg_image_url = "https://raw.githubusercontent.com/MR-REDDY-19/Sentiment-Analysis/blob/main/Sad.jpg"
-neu_image_url = "https://raw.githubusercontent.com/MR-REDDY-19/Sentiment-Analysis/blob/main/Neutral.jpg"
 
 def get_sentiment_status(score):
     if score <= -0.3:
@@ -28,14 +22,12 @@ def get_sentiment_status(score):
 # Title 
 st.title('Sentiment Analysis Web-App')
 
-# Display header image
-header_image = Image.open(header_image_url)
-st.image(header_image, use_column_width=True)
-
 # Sidebar for selecting the mode of input
 st.sidebar.markdown("<h1 style='text-align: center;'>Choose Input Method:</h1>", unsafe_allow_html=True)
 st.sidebar.markdown("<hr style='border-top: 2px solid white;'>", unsafe_allow_html=True)
 option = st.sidebar.radio("", ("Enter Review Manually","Upload CSV"))
+
+
 
 # Function to analyze sentiment for manually entered review
 def analyze_manual_review():
@@ -62,18 +54,20 @@ def analyze_manual_review():
             # Display the sentiment status in the second column
             col2.metric(label="Sentiment Status", value=sentiment_status)
 
-            # Display corresponding sentiment image
             if sentiment_status == 'Positive':
-                st.image(pos_image_url, width=200)
+                pos = Image.open("C:/Users/mange/OneDrive/Desktop/DS_PROJECT/Sentiment_Analysis/Happy.jpg")
+                st.image(pos, width=200)
             elif sentiment_status == 'Negative':
-                st.image(neg_image_url, width=200)
+                sad = Image.open(r"C:\Users\mange\OneDrive\Desktop\DS_PROJECT\Sentiment_Analysis\Sad.jpg")
+                st.image(sad, width=200)
             else:
-                st.image(neu_image_url, width=200)
+                neu = Image.open(r"C:\Users\mange\OneDrive\Desktop\DS_PROJECT\Sentiment_Analysis\Neutral.jpg")
+                st.image(neu, width=200)
             
         else:
             st.warning("Please enter a review or text.")
 
-# Function to analyze sentiment for uploaded CSV
+
 def analyze_uploaded_csv():
     uploaded_file = st.file_uploader("Upload CSV file containing reviews 📂", type=["csv"])
     if uploaded_file is not None:
@@ -107,9 +101,7 @@ def analyze_uploaded_csv():
             ax.set_title("Sentiment Analysis Results")
             
             # Add labels to the bars
-            for bar in bars:
-                yval = bar.get_height()
-                ax.text(bar.get_x() + bar.get_width()/2, yval, round(yval, 2), ha='center', va='bottom')
+            plt.bar_label(bars, label_type='center')
             
             st.pyplot(fig)
 
