@@ -5,7 +5,7 @@ from nltk.sentiment.vader import SentimentIntensityAnalyzer
 import time
 from PIL import Image
 
-header_image = Image.open("https://github.com/MR-REDDY-19/Sentiment-Analysis/blob/main/twitter-sentiment-analysis1.jpg")
+header_image = Image.open(r"https://github.com/MR-REDDY-19/Sentiment-Analysis/blob/main/twitter-sentiment-analysis1.jpg")
 st.image(header_image, use_column_width=True)
   
 # Load the pre-trained sentiment analysis model
@@ -55,13 +55,13 @@ def analyze_manual_review():
             col2.metric(label="Sentiment Status", value=sentiment_status)
 
             if sentiment_status == 'Positive':
-                pos = Image.open("https://github.com/MR-REDDY-19/Sentiment-Analysis/blob/main/Happy.jpg")
+                pos = Image.open(r"https://github.com/MR-REDDY-19/Sentiment-Analysis/blob/main/Happy.jpg")
                 st.image(pos, width=200)
             elif sentiment_status == 'Negative':
-                sad = Image.open("https://github.com/MR-REDDY-19/Sentiment-Analysis/blob/main/Sad.jpg")
+                sad = Image.open(r"https://github.com/MR-REDDY-19/Sentiment-Analysis/blob/main/Sad.jpg")
                 st.image(sad, width=200)
             else:
-                neu = Image.open("https://github.com/MR-REDDY-19/Sentiment-Analysis/blob/main/Neutral.jpg")
+                neu = Image.open(r"https://github.com/MR-REDDY-19/Sentiment-Analysis/blob/main/Neutral.jpg")
                 st.image(neu, width=200)
             
         else:
