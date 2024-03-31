@@ -5,7 +5,7 @@ from nltk.sentiment.vader import SentimentIntensityAnalyzer
 import time
 from PIL import Image
 
-header_image = Image.open(r"C:\Users\mange\OneDrive\Desktop\DS_PROJECT\Sentiment_Analysis\twitter-sentiment-analysis1.jpg")
+header_image = Image.open("https://github.com/MR-REDDY-19/Sentiment-Analysis/blob/main/twitter-sentiment-analysis1.jpg")
 st.image(header_image, use_column_width=True)
   
 # Load the pre-trained sentiment analysis model
