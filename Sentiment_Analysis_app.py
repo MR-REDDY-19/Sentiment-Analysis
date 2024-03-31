@@ -55,13 +55,13 @@ def analyze_manual_review():
             col2.metric(label="Sentiment Status", value=sentiment_status)
 
             if sentiment_status == 'Positive':
-                pos = Image.open("C:/Users/mange/OneDrive/Desktop/DS_PROJECT/Sentiment_Analysis/Happy.jpg")
+                pos = Image.open("Happy.jpg")
                 st.image(pos, width=200)
             elif sentiment_status == 'Negative':
-                sad = Image.open(r"C:\Users\mange\OneDrive\Desktop\DS_PROJECT\Sentiment_Analysis\Sad.jpg")
+                sad = Image.open("Sad.jpg")
                 st.image(sad, width=200)
             else:
-                neu = Image.open(r"C:\Users\mange\OneDrive\Desktop\DS_PROJECT\Sentiment_Analysis\Neutral.jpg")
+                neu = Image.open("Neutral.jpg")
                 st.image(neu, width=200)
             
         else:
