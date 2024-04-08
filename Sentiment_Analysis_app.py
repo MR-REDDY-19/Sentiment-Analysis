@@ -1,14 +1,11 @@
 import matplotlib.pyplot as plt
 import pandas as pd
 import streamlit as st
-import nltk
-nltk.download('vader_lexicon')
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 import time
 from PIL import Image
-import io
 
-header_image = Image.open("twitter-sentiment-analysis1.jpg")
+header_image = Image.open(r"C:\Users\mange\OneDrive\Desktop\DS_PROJECT\Sentiment_Analysis\twitter-sentiment-analysis1.jpg")
 st.image(header_image, use_column_width=True)
   
 # Load the pre-trained sentiment analysis model
@@ -57,18 +54,15 @@ def analyze_manual_review():
             # Display the sentiment status in the second column
             col2.metric(label="Sentiment Status", value=sentiment_status)
 
-            try:
-                if sentiment_status == 'Positive':
-                    pos = Image.open("Happy.jpg")
-                    st.image(pos, width=200)
-                elif sentiment_status == 'Negative':
-                    sad = Image.open("Sad.jpg")
-                    st.image(sad, width=200)
-                else:
-                    neu = Image.open("Neutral.jpg")
-                    st.image(neu, width=200)
-            except Exception as e:
-                st.error(f"Error occurred while opening image: {e}")
+            if sentiment_status == 'Positive':
+                pos = Image.open("Happy.jpg")
+                st.image(pos, width=200)
+            elif sentiment_status == 'Negative':
+                sad = Image.open("Sad.jpg")
+                st.image(sad, width=200)
+            else:
+                neu = Image.open("Neutral.jpg")
+                st.image(neu, width=200)
             
         else:
             st.warning("Please enter a review or text.")
@@ -97,8 +91,8 @@ def analyze_uploaded_csv():
             df['Sentiment Status'] = sentiment_scores.apply(get_sentiment_status)
             st.write("## DataFrame with Sentiment Status")
             st.write(df.head(20))
-            
-            # Plot bar plot based on sentiment status
+
+		# Plot bar plot based on sentiment status
             sentiment_counts = df['Sentiment Status'].value_counts()
             fig, ax = plt.subplots()
             bars = ax.bar(sentiment_counts.index, sentiment_counts.values)
@@ -110,6 +104,7 @@ def analyze_uploaded_csv():
             plt.bar_label(bars, label_type='center')
             
             st.pyplot(fig)
+
 
 # Execute corresponding function based on selected option
 if option == "Enter Review Manually":
