@@ -6,6 +6,7 @@ nltk.download('vader_lexicon')
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 import time
 from PIL import Image
+import io
 
 header_image = Image.open("twitter-sentiment-analysis1.jpg")
 st.image(header_image, use_column_width=True)
