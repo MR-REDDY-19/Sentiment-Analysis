@@ -56,15 +56,18 @@ def analyze_manual_review():
             # Display the sentiment status in the second column
             col2.metric(label="Sentiment Status", value=sentiment_status)
 
-            if sentiment_status == 'Positive':
-                pos = Image.open("Happy.jpg")
-                st.image(pos, width=200)
-            elif sentiment_status == 'Negative':
-                sad = Image.open("Sad.jpg")
-                st.image(sad, width=200)
-            else:
-                neu = Image.open("Neutral.jpg")
-                st.image(neu, width=200)
+            try:
+                if sentiment_status == 'Positive':
+                    pos = Image.open("Happy.jpg")
+                    st.image(pos, width=200)
+                elif sentiment_status == 'Negative':
+                    sad = Image.open("Sad.jpg")
+                    st.image(sad, width=200)
+                else:
+                    neu = Image.open("Neutral.jpg")
+                    st.image(neu, width=200)
+            except Exception as e:
+                st.error(f"Error occurred while opening image: {e}")
             
         else:
             st.warning("Please enter a review or text.")
