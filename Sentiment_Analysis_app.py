@@ -1,6 +1,8 @@
 import matplotlib.pyplot as plt
 import pandas as pd
 import streamlit as st
+import nltk
+nltk.download('vader_lexicon')
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 import time
 from PIL import Image
